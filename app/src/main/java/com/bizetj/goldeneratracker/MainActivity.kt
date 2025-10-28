@@ -12,6 +12,8 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.bizetj.goldeneratracker.ui.components.AppBottomBar
 import com.bizetj.goldeneratracker.ui.navigation.NavGraph
+import com.bizetj.goldeneratracker.ui.navigation.Screen
+import com.bizetj.goldeneratracker.ui.theme.GoldenEraTrackerTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,7 +21,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MaterialTheme {
+            GoldenEraTrackerTheme(darkTheme = false) {
                 val navController = rememberNavController()
                 val navBackStackEntry by navController.currentBackStackEntryAsState()
                 val currentRoute = navBackStackEntry?.destination?.route
@@ -27,10 +29,13 @@ class MainActivity : ComponentActivity() {
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
                     bottomBar = {
-                        AppBottomBar(
-                            navController = navController,
-                            currentRoute = currentRoute
-                        )
+                        // Cacher la BottomBar sur l'écran Welcome
+                        if (currentRoute != Screen.Welcome.route) {
+                            AppBottomBar(
+                                navController = navController,
+                                currentRoute = currentRoute
+                            )
+                        }
                     }
                 ) { paddingValues ->
                     Surface(

@@ -25,7 +25,10 @@ fun HistoriqueList(historique: List<HistoriqueSeanceAvecNom>) {
 private fun HistoriqueItem(item: HistoriqueSeanceAvecNom) {
     Card(
         modifier = Modifier.fillMaxWidth(),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surface
+        )
     ) {
         Row(
             modifier = Modifier

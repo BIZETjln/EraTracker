@@ -26,7 +26,10 @@ fun ExerciceProgressionCard(
 
     Card(
         modifier = Modifier.fillMaxWidth(),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surface
+        )
     ) {
         Column(
             modifier = Modifier
@@ -60,7 +63,10 @@ fun ExerciceProgressionCard(
                             onClick = {
                                 onExerciceSelected(id)
                                 expanded = false
-                            }
+                            },
+                            colors = MenuDefaults.itemColors(
+                                textColor = MaterialTheme.colorScheme.onSurface
+                            )
                         )
                     }
                 }

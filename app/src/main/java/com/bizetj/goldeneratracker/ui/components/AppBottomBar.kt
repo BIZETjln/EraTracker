@@ -14,7 +14,10 @@ fun AppBottomBar(
     navController: NavController,
     currentRoute: String?
 ) {
-    NavigationBar {
+    NavigationBar(
+        containerColor = MaterialTheme.colorScheme.surface,
+        contentColor = MaterialTheme.colorScheme.onSurface
+    ) {
         val items = listOf(
             BottomNavItem("Liste", Icons.AutoMirrored.Filled.List, Screen.Liste.route),
             BottomNavItem("Créer", Icons.Default.Add, Screen.Creation.route),
@@ -32,7 +35,14 @@ fun AppBottomBar(
                         launchSingleTop = true
                         restoreState = true
                     }
-                }
+                },
+                colors = NavigationBarItemDefaults.colors(
+                    selectedIconColor = MaterialTheme.colorScheme.primary,
+                    selectedTextColor = MaterialTheme.colorScheme.primary,
+                    indicatorColor = MaterialTheme.colorScheme.primaryContainer,
+                    unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                    unselectedTextColor = MaterialTheme.colorScheme.onSurfaceVariant
+                )
             )
         }
     }

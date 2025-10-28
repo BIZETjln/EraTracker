@@ -94,7 +94,10 @@ private fun VueEnsembleTab(state: StatsState) {
         item {
             if (state.historique.isEmpty()) {
                 Card(
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = CardDefaults.cardColors(
+                        containerColor = MaterialTheme.colorScheme.surface
+                    )
                 ) {
                     Box(
                         modifier = Modifier
@@ -134,7 +137,10 @@ private fun ProgressionTab(state: StatsState, viewModel: StatsViewModel) {
         item {
             if (state.exercicesDisponibles.isEmpty()) {
                 Card(
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = CardDefaults.cardColors(
+                        containerColor = MaterialTheme.colorScheme.surface
+                    )
                 ) {
                     Box(
                         modifier = Modifier

@@ -13,7 +13,11 @@ import java.util.*
 fun StatsGlobalesCard(stats: StatsGlobales) {
     Card(
         modifier = Modifier.fillMaxWidth(),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surface
+        )
+
     ) {
         Column(
             modifier = Modifier
