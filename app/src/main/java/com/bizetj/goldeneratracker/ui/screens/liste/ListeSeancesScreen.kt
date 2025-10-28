@@ -18,7 +18,7 @@ import com.bizetj.goldeneratracker.data.entity.Seance
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ListeSeancesScreen(
-    onSeanceClick: (Long) -> Unit = {}, // Ajout du paramètre
+    onSeanceClick: (Long) -> Unit = {},
     viewModel: ListeSeancesViewModel = hiltViewModel()
 ) {
     val seances by viewModel.seances.collectAsState()
@@ -29,7 +29,13 @@ fun ListeSeancesScreen(
                 title = { Text("🏆 Mes Séances") },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer
-                )
+                ),
+                actions = {
+                    // NOUVEAU BOUTON
+                    TextButton(onClick = { viewModel.genererDonneesTest() }) {
+                        Text("🧪 Test")
+                    }
+                }
             )
         },
         floatingActionButton = {
@@ -63,7 +69,7 @@ fun ListeSeancesScreen(
                 items(seances) { seance ->
                     SeanceCard(
                         seance = seance,
-                        onClick = { onSeanceClick(seance.id) }, // Ajout du clic
+                        onClick = { onSeanceClick(seance.id) },
                         onDelete = { viewModel.deleteSeance(seance) }
                     )
                 }
@@ -75,7 +81,7 @@ fun ListeSeancesScreen(
 @Composable
 fun SeanceCard(
     seance: Seance,
-    onClick: () -> Unit, // Nouveau paramètre
+    onClick: () -> Unit,
     onDelete: () -> Unit
 ) {
     var showDeleteDialog by remember { mutableStateOf(false) }
@@ -83,7 +89,7 @@ fun SeanceCard(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable(onClick = onClick), // Ajout du clickable
+            .clickable(onClick = onClick),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
     ) {
         Row(

@@ -9,6 +9,7 @@ import androidx.navigation.navArgument
 import com.bizetj.goldeneratracker.ui.screens.creation.CreationSeanceScreen
 import com.bizetj.goldeneratracker.ui.screens.liste.ListeSeancesScreen
 import com.bizetj.goldeneratracker.ui.screens.seance.SeanceEnCoursScreen
+import com.bizetj.goldeneratracker.ui.screens.stats.StatsScreen
 
 @Composable
 fun NavGraph(navController: NavHostController) {
@@ -48,7 +49,7 @@ fun NavGraph(navController: NavHostController) {
         }
 
         composable(Screen.Stats.route) {
-            // Placeholder pour les stats (Milestone futur)
+            StatsScreen()
         }
     }
 }
